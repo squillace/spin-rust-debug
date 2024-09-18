@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "secondtry"
+version = "0.1.0"
+authors = ["ralph squillace <ralph@squillace.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "secondtry"
+
+[component.secondtry]
+source = "target/wasm32-wasi/release/secondtry.wasm"
+allowed_outbound_hosts = []
+[component.secondtry.build]
+command = "cargo build --target wasm32-wasi"
+watch = ["src/**/*.rs", "Cargo.toml"]
